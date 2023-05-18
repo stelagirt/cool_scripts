@@ -1,0 +1,22 @@
+from geopy.geocoders import Nominatim
+
+# Initialize geocoder
+geolocator = Nominatim(user_agent="my-application")
+
+# List of latitude and longitude pairs
+coordinates = [(latitude1, longitude1), (latitude2, longitude2), ...]
+
+# Iterate over the coordinates
+for coordinate in coordinates:
+    latitude, longitude = coordinate
+
+    # Reverse geocode the coordinates to get the location
+    location = geolocator.reverse(f"{latitude}, {longitude}", exactly_one=True)
+
+    # Extract the country from the location address
+    country = location.raw['address'].get('country')
+
+    # Print the result
+    print(f"Latitude: {latitude}, Longitude: {longitude}, Country: {country}")
+
+
